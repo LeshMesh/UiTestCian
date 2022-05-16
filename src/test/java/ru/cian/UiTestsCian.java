@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withTagAndText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class UiTestsCian extends TestBase {
 
@@ -25,7 +24,7 @@ public class UiTestsCian extends TestBase {
     }
 
     @Test
-    void search() {
+    void searchListRentHousePriceCityTest() {
         open("/");
         $("[data-name=FiltersTabs]").$(byText("Снять")).click();
         $("[data-mark=FilterOfferType]").click();
@@ -39,5 +38,26 @@ public class UiTestsCian extends TestBase {
 
         $("#mainFilter_price").shouldHave(Condition.text("100 - 300 тыс ₽"));
         $("div h1").shouldHave(Condition.text("Снять дом в Санкт-Петербурге на длительный срок"));
+    }
+
+    @Test
+    void addFavoritesTest() {
+        open("/");
+        $("[data-name=PopularContent]").$("[data-name=Link]").click();
+        String name = $("[data-name=OfferTitle] h1").innerText();
+        $("[data-name=FavoriteButton]").click();
+        $("[data-name=LoginMotivationTooltip]").shouldHave(Condition.text("Добавлено в избранное"));
+        $(withTagAndText("span","Войти")).click();
+
+        $("[data-name=SwitchToEmailAuthBtn]").click();
+        $("[name=username]").setValue("ivlex_37rus@mail.ru");
+        $("[data-name=ContinueAuthBtn]").click();
+        $("[name=password]").setValue("1234567890").pressEnter();
+        $("[data-name=ContinueAuthBtn]").click();
+
+        open("/favorites");
+        $("[data-name=MainTitle]").click();
+        switchTo().window(1);
+        $("[data-name=OfferTitle]").$("h1").shouldHave(Condition.text(name));
     }
 }
