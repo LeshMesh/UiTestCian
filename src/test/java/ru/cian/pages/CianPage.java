@@ -1,101 +1,135 @@
 package ru.cian.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.*;
+import static ru.cian.TestData.*;
 
 public class CianPage {
     public String name;
 
+    public SelenideElement
+        buttonLogIn = $(byText("Войти")),
+        buttonEmail = $("[data-name=SwitchToEmailAuthBtn]"),
+        fieldEmail = $("[name=username]"),
+        buttonContinue = $("[data-name=ContinueAuthBtn]"),
+        fieldPassword = $("[name=password]"),
+        userAvatar = $("[data-name=UserAvatar]"),
+        userMenu = $("[data-name=UserMenuItem]"),
+        tabsRent = $("[data-name=FiltersTabs]").$(byText("Снять")),
+        filterOffer = $("[data-mark=FilterOfferType]"),
+        house = $(withTagAndText("span","Дом, дача")),
+        filterPriceSearch = $("[data-mark=FilterPrice]"),
+        fieldPriceFrom = $("[placeholder=от]"),
+        fieldPriceTo = $("[placeholder=до]"),
+        fieldInputGeo = $("#geo-suggest-input"),
+        selectCity = $("[data-group=cities]").$("[title=" + city + "]"),
+        buttonSearch = $("[data-mark=FiltersSearchButton]"),
+        filterPrice = $("#mainFilter_price"),
+        headerPage = $("div h1"),
+        popularTab = $("[data-name=PopularContent]").$("[data-name=Link]"),
+        nameTab = $("[data-name=OfferTitle] h1"),
+        buttonFavourite = $("[data-name=FavoriteButton]"),
+        nameFavouriteTooltip = $("[data-name=LoginMotivationTooltip]"),
+        headerTab = $("[data-name=MainTitle]"),
+        headerFavouriteTooltip = $("[data-name=UtilityFavoritesContainer]"),
+        nameFavouriteTab = $("[data-name=FavoriteItem span]"),
+        buttonGeoSwitcher = $("[data-name=GeoSwitcher] button"),
+        inputGeo = $("[data-name=GeoSwitcherBody]").$(byText(city)),
+        buttonSelectGeo = $("[data-name=GeoSwitcherHeader]").$(byText("Выбрать")),
+        promoLinks = $("[data-name=PromoLinks]").$(byText("1-комнатные")),
+        filterType = $("#mainFilter_dealType"),
+        filterRoomType = $("#mainFilter_roomType");
+
     public CianPage clickLogInHeader() {
-        $(byText("Войти")).click();
+        buttonLogIn.click();
         return this;
     }
 
     public CianPage setValueEmail() {
-        $("[data-name=SwitchToEmailAuthBtn]").click();
-        $("[name=username]").setValue("ivlex_37rus@mail.ru");
+        buttonEmail.click();
+        fieldEmail.setValue("ivlex_37rus@mail.ru");
         return this;
     }
 
     public CianPage setValuePassword() {
-        $("[data-name=ContinueAuthBtn]").click();
-        $("[name=password]").setValue("1234567890");
+        buttonContinue.click();
+        fieldPassword.setValue("1234567890");
         return this;
     }
 
     public CianPage clickContinueLogIn() {
-        $("[data-name=ContinueAuthBtn]").click();
+        buttonContinue.click();
         return this;
     }
 
     public CianPage checkResultAuthorization() {
-        $("[data-name=UserAvatar]").shouldBe(Condition.visible).click();
-        $("[data-name=UserMenuItem]").shouldHave(Condition.text("Личный кабинет"));
+        userAvatar.shouldBe(Condition.visible).click();
+        userMenu.shouldHave(Condition.text("Личный кабинет"));
         return this;
     }
 
     public CianPage chooseFilterType() {
-        $("[data-name=FiltersTabs]").$(byText("Снять")).click();
+        tabsRent.click();
         return this;
     }
 
     public CianPage chooseFilterOffer() {
-        $("[data-mark=FilterOfferType]").click();
-        $(withTagAndText("span","Дом, дача")).click();
+        filterOffer.click();
+        house.click();
         return this;
     }
 
     public CianPage chooseFilterPrice() {
-        $("[data-mark=FilterPrice]").click();
-        $("[placeholder=от]").setValue("100000");
-        $("[placeholder=до]").setValue("300000");
+        filterPriceSearch.click();
+        fieldPriceFrom.setValue(priceFrom);
+        fieldPriceTo.setValue(priceTo);
         return this;
     }
 
     public CianPage chooseFilterGeo() {
-        $("#geo-suggest-input").setValue("Санкт-Петербург");
-        $("[data-group=cities]").$("[title=Санкт-Петербург]").click();
+        fieldInputGeo.setValue(city);
+        selectCity.click();
         return this;
     }
 
     public CianPage clickSearch() {
-        $("[data-mark=FiltersSearchButton]").click();
+        buttonSearch.click();
         return this;
     }
 
     public CianPage checkResultSearch() {
-        $("#mainFilter_price").shouldHave(Condition.text("100 - 300 тыс ₽"));
-        $("div h1").shouldHave(Condition.text("Снять дом в Санкт-Петербурге на длительный срок"));
+        filterPrice.shouldHave(Condition.text(priceFromShort + " - " + priceToShort + " тыс ₽"));
+        headerPage.shouldHave(Condition.text("Снять дом в " + city + " на длительный срок"));
         return this;
     }
 
     public CianPage choosePopularTab() {
-        $("[data-name=PopularContent]").$("[data-name=Link]");
-        sleep(2000);
-        $("[data-name=PopularContent]").$("[data-name=Link]").click();
+        popularTab.click();
         return this;
     }
 
     public CianPage saveName() {
-        name = $("[data-name=OfferTitle] h1").innerText();
+        name = nameTab.innerText();
         return this;
     }
 
     public CianPage clickAddFavorite() {
-        $("[data-name=FavoriteButton]").click();
+        buttonFavourite.click();
         return this;
     }
 
     public CianPage checkAddFavoriteTooltip() {
-        $("[data-name=LoginMotivationTooltip]").shouldHave(Condition.text("Добавлено в избранное"));
+        nameFavouriteTooltip.shouldHave(Condition.text("Добавлено в избранное"));
         return this;
     }
 
     public CianPage clickLogInFavorite() {
-        $(withTagAndText("span","Войти")).click();
+        buttonLogIn.click();
+//        $(withTagAndText("span","Войти")).click();
         return this;
     }
 
@@ -105,54 +139,56 @@ public class CianPage {
     }
 
     public CianPage openFavoriteCard() {
-        $("[data-name=MainTitle]").click();
+        headerTab.click();
         return this;
     }
 
     public CianPage checkResultAddFavourite() {
-        $("[data-name=OfferTitle]").$("h1").shouldHave(Condition.text(name));
+        nameTab.shouldHave(Condition.text(name));
+//        $("[data-name=OfferTitle]").$("h1").shouldHave(Condition.text(name));
         return this;
     }
 
     public CianPage openTooltipHeaderFavourite() {
-        $("[data-name=UtilityFavoritesContainer]").click();
+        headerFavouriteTooltip.click();
         return this;
     }
 
     public CianPage checkResultAddFavouriteTooltipHeader() {
-        $("[data-name=FavoriteItem span]").shouldHave(Condition.text(name));
+        nameFavouriteTab.shouldHave(Condition.text(name));
         return this;
     }
 
     public CianPage clickGeoSwitcher() {
-        $("[data-name=GeoSwitcher] button").click();
+        buttonGeoSwitcher.click();
         return this;
     }
 
     public CianPage chooseCity() {
-        $("[data-name=GeoSwitcherBody]").$(byText("Уфа")).click();
-        $("[data-name=GeoSwitcherHeader]").$(byText("Выбрать")).click();
+        inputGeo.click();
+        buttonSelectGeo.click();
         return this;
     }
 
     public CianPage checkChangeGeo() {
-        $("[data-name=GeoSwitcher]").shouldHave(Condition.text("Уфа"));
+        buttonGeoSwitcher.shouldHave(Condition.text(city));
+//        $("[data-name=GeoSwitcher]").shouldHave(Condition.text("Уфа"));
         return this;
     }
 
     public CianPage openPromoCard() {
-        $("[data-name=PromoLinks]").$(byText("1-комнатные")).click();
+        promoLinks.click();
         return this;
     }
 
     public CianPage checkMainFilter() {
-        $("#mainFilter_dealType").shouldHave(Condition.text("Купить"));
-        $("#mainFilter_roomType").shouldHave(Condition.text("1-комнатную"));
+        filterType.shouldHave(Condition.text("Купить"));
+        filterRoomType.shouldHave(Condition.text("1-комнатную"));
         return this;
     }
 
     public CianPage checkHeaderPage() {
-        $("div h1").shouldHave(Condition.text("Продажа однокомнатных квартир в Москве"));
+        headerPage.shouldHave(Condition.text("Продажа однокомнатных квартир в Москве"));
         return this;
     }
 }
