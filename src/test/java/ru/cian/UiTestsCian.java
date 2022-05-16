@@ -41,7 +41,7 @@ public class UiTestsCian extends TestBase {
     }
 
     @Test
-    void addFavoritesTest() {
+    void addFavoritesAuthorizationTest() {
         open("/");
         $("[data-name=PopularContent]").$("[data-name=Link]").click();
         String name = $("[data-name=OfferTitle] h1").innerText();
@@ -59,5 +59,37 @@ public class UiTestsCian extends TestBase {
         $("[data-name=MainTitle]").click();
         switchTo().window(1);
         $("[data-name=OfferTitle]").$("h1").shouldHave(Condition.text(name));
+    }
+
+    @Test
+    void addFavoritesTest() {
+        open("/");
+        $("[data-name=PopularContent]").$("[data-name=Link]").click();
+        String name = $("[data-name=OfferTitle] h1").innerText();
+        $("[data-name=FavoriteButton]").click();
+        $("[data-name=LoginMotivationTooltip]").shouldHave(Condition.text("Добавлено в избранное"));
+        $("[data-name=UtilityFavoritesContainer]").click();
+
+        $("[data-name=FavoriteItem]").shouldHave(Condition.text(name));
+    }
+
+    @Test
+    void changeGeoTest() {
+        open("/");
+        $("[data-name=GeoSwitcher] button").click();
+        $("[data-name=GeoSwitcherBody]").$(byText("Уфа")).click();
+        $("[data-name=GeoSwitcherHeader]").$(byText("Выбрать")).click();
+
+        $("[data-name=GeoSwitcher]").shouldHave(Condition.text("Уфа"));
+    }
+
+    @Test
+    void linkTest() {
+        open("/");
+        $("[data-name=PromoLinks]").$(byText("1-комнатные")).click();
+
+        $("#mainFilter_dealType").shouldHave(Condition.text("Купить"));
+        $("#mainFilter_roomType").shouldHave(Condition.text("1-комнатную"));
+        $("div h1").shouldHave(Condition.text("Продажа однокомнатных квартир в Москве"));
     }
 }
