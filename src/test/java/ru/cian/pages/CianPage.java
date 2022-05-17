@@ -42,7 +42,9 @@ public class CianPage {
         buttonSelectGeo = $("[data-name=GeoSwitcherHeader]").$(byText("Выбрать")),
         promoLinks = $("[data-name=PromoLinks]").$(byText("1-комнатные")),
         filterType = $("#mainFilter_dealType"),
-        filterRoomType = $("#mainFilter_roomType");
+        filterRoomType = $("#mainFilter_roomType"),
+        buttonLogInTooltip = nameFavouriteTooltip.$(byText("Войти")),
+        titleTab = $("[data-name=OfferTitle]").$("h1");
 
     public CianPage clickLogInHeader() {
         buttonLogIn.click();
@@ -103,7 +105,7 @@ public class CianPage {
 
     public CianPage checkResultSearch() {
         filterPrice.shouldHave(Condition.text(priceFromShort + " - " + priceToShort + " тыс ₽"));
-        headerPage.shouldHave(Condition.text("Снять дом в " + city + " на длительный срок"));
+        headerPage.shouldHave(Condition.text("Снять дом в " + city));
         return this;
     }
 
@@ -128,8 +130,7 @@ public class CianPage {
     }
 
     public CianPage clickLogInFavorite() {
-        buttonLogIn.click();
-//        $(withTagAndText("span","Войти")).click();
+        buttonLogInTooltip.click();
         return this;
     }
 
@@ -144,8 +145,7 @@ public class CianPage {
     }
 
     public CianPage checkResultAddFavourite() {
-        nameTab.shouldHave(Condition.text(name));
-//        $("[data-name=OfferTitle]").$("h1").shouldHave(Condition.text(name));
+        titleTab.shouldHave(Condition.text(name));
         return this;
     }
 
@@ -172,7 +172,6 @@ public class CianPage {
 
     public CianPage checkChangeGeo() {
         buttonGeoSwitcher.shouldHave(Condition.text(city));
-//        $("[data-name=GeoSwitcher]").shouldHave(Condition.text("Уфа"));
         return this;
     }
 
