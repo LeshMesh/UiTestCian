@@ -6,6 +6,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import ru.cian.helpers.Attach;
+import ru.cian.helpers.DriverConfig;
 import ru.cian.pages.CianPage;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -18,6 +19,7 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+        DriverConfig.configure();
 
         Configuration.baseUrl = "https://cian.ru";
         Configuration.browser = "CHROME";
