@@ -20,8 +20,6 @@ public class TestBase {
     static void beforeAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         DriverConfig.configure();
-
-        Configuration.baseUrl = "https://cian.ru";
     }
 
     @BeforeEach
