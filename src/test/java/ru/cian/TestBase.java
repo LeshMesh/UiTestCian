@@ -22,8 +22,6 @@ public class TestBase {
         DriverConfig.configure();
 
         Configuration.baseUrl = "https://cian.ru";
-        Configuration.browser = "CHROME";
-        Configuration.browserSize = "1920x1080";
     }
 
     @BeforeEach
