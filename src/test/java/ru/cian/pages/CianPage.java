@@ -2,6 +2,7 @@ package ru.cian.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import ru.cian.config.Project;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withTagAndText;
@@ -53,13 +54,13 @@ public class CianPage {
 
     public CianPage setValueEmail() {
         buttonEmail.click();
-        fieldEmail.setValue("ivlex_37rus@mail.ru");
+        fieldEmail.setValue(Project.config.username());
         return this;
     }
 
     public CianPage setValuePassword() {
         buttonContinue.click();
-        fieldPassword.setValue("1234567890");
+        fieldPassword.setValue(Project.config.password());
         return this;
     }
 
