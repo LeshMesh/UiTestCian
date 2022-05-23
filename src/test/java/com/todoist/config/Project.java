@@ -1,4 +1,4 @@
-package ru.cian.config;
+package com.todoist.config;
 
 import org.aeonbits.owner.ConfigFactory;
 

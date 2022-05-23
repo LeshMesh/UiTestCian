@@ -1,4 +1,4 @@
-package ru.cian.config;
+package com.todoist.config;
 
 import org.aeonbits.owner.Config;
 
@@ -18,6 +18,7 @@ public interface WebDriverConfig extends Config {
     String browserSize();
 
     @Key("remoteUrl")
+    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
     String remoteUrl();
 
     @Key("username")

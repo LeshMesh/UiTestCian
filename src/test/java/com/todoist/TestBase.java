@@ -1,31 +1,24 @@
-package ru.cian;
+package com.todoist;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.todoist.helpers.Attach;
+import com.todoist.helpers.DriverConfig;
+import com.todoist.pages.TodoistPage;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import ru.cian.helpers.Attach;
-import ru.cian.helpers.DriverConfig;
-import ru.cian.pages.CianPage;
 import org.junit.jupiter.api.BeforeAll;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestBase {
 
-    CianPage cianPage = new CianPage();
+    TodoistPage todoistPage = new TodoistPage();
 
     @BeforeAll
     static void beforeAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         DriverConfig.configure();
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        open("/");
-        sleep(2000); //обход защиты
     }
 
     @AfterEach
