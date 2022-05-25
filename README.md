@@ -66,7 +66,7 @@ gradle clean test
 *Для запуска сборки необходимо указать значения параметров и нажать кнопку <code><strong>*Собрать*</strong></code>.*
  
 <p align="center">
-  <img src="files/jenkins.png" alt="job" width="800">
+  <img src="files/jenkins.png" alt="jenkins" width="800">
 </p>
 
 *После выполнения сборки, в блоке <code><strong>*История сборок*</strong></code> напротив номера сборки появится
@@ -74,18 +74,32 @@ gradle clean test
 Report*</strong></code>, кликнув по которому, откроется страница со сформированным отчетом.*
 
 <p align="center">
-  <img src="files/jenkins2.png" alt="job" width="800">
+  <img src="files/jenkins2.png" alt="jenkins" width="800">
 </p>
 
 ## Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/011-LeshMesh-GraduationWork-UiTests/)
-  
+
+<p align="center">
+  <img src="files/allure.png" alt="allure" width="800">
+</p>
+
 ### Список тестов c описанием шагов и визуализацией результатов
   
+<p align="center">
+  <img src="files/allure2.png" alt="allure" width="800">
+</p>
+
 ## Пример запуска теста в Selenoid
 > К каждому тесту в отчете прилагается видео.
+
 <p align="center">
 <img src="files/video.gif" alt="video" width="1000">
 </p>
   
 ## Уведомления в Telegram
 > После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне.
+
+<p align="center">
+  <img src="files/telegram_notification.png" alt="telegram" width="400">
+</p>
+
