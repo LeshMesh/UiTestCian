@@ -5,8 +5,8 @@ import org.aeonbits.owner.Config;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
         "system:properties",
-        "classpath:config/local.properties",
-        "classpath:config/remote.properties"
+        "classpath:local.properties",
+        "classpath:remote.properties"
 })
 public interface WebDriverConfig extends Config {
 
