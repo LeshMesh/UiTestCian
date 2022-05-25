@@ -77,7 +77,7 @@ Report*</strong></code>, кликнув по которому, откроетс�
   <img src="files/jenkins2.png" alt="jenkins" width="800">
 </p>
 
-## Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/011-LeshMesh-GraduationWork-UiTests/)
+## Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/011-LeshMesh-GraduationWork-UiTests/27/allure/#)
 
 <p align="center">
   <img src="files/allure.png" alt="allure" width="800">
