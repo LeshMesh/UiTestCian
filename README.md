@@ -50,8 +50,6 @@ gradle clean test
   -DbrowserVersion=[BROWSER_VERSION]
   -DbrowserSize=[BROWSER_SIZE]
   -DremoteDriverUrl=https://[selenoidUser]:[selenoidPwd]@[REMOTE_DRIVER_URL]/wd/hub/
-  -DvideoStorage=https://[REMOTE_DRIVER_URL]/video/
-  -DbaseUrl=[BASE_URL]
 ```
 
 где:
@@ -59,8 +57,6 @@ gradle clean test
 >- [x] *DbrowserVersion - версия браузера (по умолчанию 91.0)*
 >- [x] *DbrowserSize - размер окна браузера (по умолчанию 1920x1080)*
 >- [x] *DremoteDriverUrl - логин, пароль и адрес удаленного сервера, где будут выполняться тесты (по умолчанию https://[selenoidUser]:[selenoidPwd]@selenoid.autotests.cloud/wd/hub/)*
->- [x] *DvideoStorage - хранилище видео выполненных тестов (по умолчанию https://selenoid.autotests.cloud/video/)*
->- [x] *DbaseUrl - основной адрес тестового стенда*
   
 ## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/011-LeshMesh-GraduationWork-UiTests/)
 *Для запуска сборки необходимо указать значения параметров и нажать кнопку <code><strong>*Собрать*</strong></code>.*
