@@ -1,4 +1,4 @@
-# Дипломный проект по автоматизации тестирования мобильного приложения [Todoist](http://todoist.com/ru/)
+# Дипломный проект по автоматизации UI тестирования сайта [Todoist](http://todoist.com/ru/)
 Реализован во время обучения в Школе инженеров по автоматизации тестирования [qa.guru](http://qa.guru/)
 
 ## Технологии и инструменты
@@ -46,23 +46,23 @@ gradle clean test
 
 ```bash
 gradle clean test 
-  -Dbrowser=[BROWSER]
+  -DbrowserName=[BROWSER]
   -DbrowserVersion=[BROWSER_VERSION]
   -DbrowserSize=[BROWSER_SIZE]
-  -DremoteDriverUrl=https://[selenoidUser]:[selenoidPwd]@[REMOTE_DRIVER_URL]/wd/hub/
+  -DtypeProperties=remote
 ```
 
 где:
 >- [x] *Dbrowser - браузер, в котором будут выполняться тесты (по умолчанию chrome)*
->- [x] *DbrowserVersion - версия браузера (по умолчанию 91.0)*
+>- [x] *DbrowserVersion - версия браузера (по умолчанию 100.0)*
 >- [x] *DbrowserSize - размер окна браузера (по умолчанию 1920x1080)*
->- [x] *DremoteDriverUrl - логин, пароль и адрес удаленного сервера, где будут выполняться тесты (по умолчанию https://[selenoidUser]:[selenoidPwd]@selenoid.autotests.cloud/wd/hub/)*
+>- [x] *DtypeProperties - запуск тестов локально или на удаленном сервере (по умолчанию https://[selenoidUser]:[selenoidPwd]@selenoid.autotests.cloud/wd/hub/)*
   
 ## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/011-LeshMesh-GraduationWork-UiTests/)
 *Для запуска сборки необходимо указать значения параметров и нажать кнопку <code><strong>*Собрать*</strong></code>.*
  
 <p align="center">
-  <img src="files/jenkins.png" alt="jenkins" width="800">
+  <img src="files/jenkins.png" alt="jenkins" width="1000">
 </p>
 
 *После выполнения сборки, в блоке <code><strong>*История сборок*</strong></code> напротив номера сборки появится
@@ -70,19 +70,19 @@ gradle clean test
 Report*</strong></code>, кликнув по которому, откроется страница со сформированным отчетом.*
 
 <p align="center">
-  <img src="files/jenkins2.png" alt="jenkins" width="800">
+  <img src="files/jenkins2.png" alt="jenkins" width="1000">
 </p>
 
 ## Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/011-LeshMesh-GraduationWork-UiTests/27/allure/#)
 
 <p align="center">
-  <img src="files/allure.png" alt="allure" width="800">
+  <img src="files/allure.png" alt="allure" width="1000">
 </p>
 
 ### Список тестов c описанием шагов и визуализацией результатов
   
 <p align="center">
-  <img src="files/allure2.png" alt="allure" width="800">
+  <img src="files/allure2.png" alt="allure" width="1000">
 </p>
 
 ## Пример запуска теста в Selenoid
